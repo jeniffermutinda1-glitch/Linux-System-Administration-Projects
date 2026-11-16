@@ -1,0 +1,78 @@
+LINUX SYSTEM DISCOVERY AND ENVIRONMENT REPORT
+
+1.System Information
+
+Project: Linux System Discovery and Environment Report
+
+Role: Junior Linux System Administration
+
+Operating System: Ubuntu Linux
+
+Environment: Oracle VirtualBox
+
+
+2. Operating System and Version
+
+Distribution ID: Ubuntu
+Description:	Ubuntu 26.04.1 LTS
+Release:	26.04
+Codename:	resolute
+
+command used:
+   lsb_release -a
+
+ 
+3.Kernel Information
+ 
+ Kernel version: 7.0.0-43-generic
+
+ 
+Command used:
+ uname -r
+ uname -a
+
+4.Hostname
+ 
+ Hostname:jeni-VirtualBox
+ 
+Command used: 
+ hostname
+
+
+5.Current Logged-in User
+ Username: sysadmim
+
+Command used:
+ whoami
+
+6.System Architecture
+
+Architecture:x86_64
+
+Command used:
+uname -m
+
+
+7.System Uptime:
+11:16:36 up  4:13,  1 user,  load average: 0.16, 0.14, 0.17
+
+command used:
+uptime
+
+
+8.Administrative Access Status
+
+uid=1001(sysadmin) gid=1001(sysadmin) groups=1001(sysadmin),27(sudo),100(users)  
+  Command used:
+  id
+
+9.Conculusion
+
+The system inspection successfully identified the linux distribution, operating system version,kernel version, hostname, logged-in user, system architecture, uotime and administrative group membership.
+
+The machine is running Ubuntu Linux 26.04.1 LTS in an oracle VirtualBox enivironment
+
+The finding establish a basic understanding of the system environment and provide an initial reference for subsequent Linux system administration
+activities.
+
+Report Status: Completetd
