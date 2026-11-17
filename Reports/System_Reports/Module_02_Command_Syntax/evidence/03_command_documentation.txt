@@ -1,0 +1,220 @@
+PROJECT 2: COMMAND DOCUMENTATION
+================================
+
+1. date manual availability
+/usr/share/man/man1/rust-date.1.gz
+
+2. date help output
+Print or set the system date and time
+
+Usage: date [OPTION]... [+FORMAT]...
+       date [OPTION]... [MMDDhhmm[[CC]YY][.ss]]
+       
+       FORMAT controls the output.  Interpreted sequences are:
+       | Sequence | Description                                                          | Example                |
+       | -------- | -------------------------------------------------------------------- | ---------------------- |
+       | %%       | a literal %                                                          | %                      |
+       | %a       | locale's abbreviated weekday name                                    | Sun                    |
+       | %A       | locale's full weekday name                                           | Sunday                 |
+       | %b       | locale's abbreviated month name                                      | Jan                    |
+       | %B       | locale's full month name                                             | January                |
+       | %c       | locale's date and time                                               | Thu Mar 3 23:05:25 2005|
+       | %C       | century; like %Y, except omit last two digits                        | 20                     |
+       | %d       | day of month                                                         | 01                     |
+       | %D       | date; same as %m/%d/%y                                               | 12/31/99               |
+       | %e       | day of month, space padded; same as %_d                              | 3                      |
+       | %F       | full date; same as %Y-%m-%d                                          | 2005-03-03             |
+       | %g       | last two digits of year of ISO week number (see %G)                  | 05                     |
+       | %G       | year of ISO week number (see %V); normally useful only with %V       | 2005                   |
+       | %h       | same as %b                                                           | Jan                    |
+       | %H       | hour (00..23)                                                        | 23                     |
+       | %I       | hour (01..12)                                                        | 11                     |
+       | %j       | day of year (001..366)                                               | 062                    |
+       | %k       | hour, space padded ( 0..23); same as %_H                             |  3                     |
+       | %l       | hour, space padded ( 1..12); same as %_I                             |  9                     |
+       | %m       | month (01..12)                                                       | 03                     |
+       | %M       | minute (00..59)                                                      | 30                     |
+       | %n       | a newline                                                            | \n                     |
+       | %N       | nanoseconds (000000000..999999999)                                   | 123456789              |
+       | %p       | locale's equivalent of either AM or PM; blank if not known           | PM                     |
+       | %P       | like %p, but lower case                                              | pm                     |
+       | %q       | quarter of year (1..4)                                               | 1                      |
+       | %r       | locale's 12-hour clock time                                          | 11:11:04 PM            |
+       | %R       | 24-hour hour and minute; same as %H:%M                               | 23:30                  |
+       | %s       | seconds since 1970-01-01 00:00:00 UTC                                | 1615432800             |
+       | %S       | second (00..60)                                                      | 30                     |
+       | %t       | a tab                                                                | \t                     |
+       | %T       | time; same as %H:%M:%S                                               | 23:30:30               |
+       | %u       | day of week (1..7); 1 is Monday                                      | 4                      |
+       | %U       | week number of year, with Sunday as first day of week (00..53)       | 10                     |
+       | %V       | ISO week number, with Monday as first day of week (01..53)           | 12                     |
+       | %w       | day of week (0..6); 0 is Sunday                                      | 4                      |
+       | %W       | week number of year, with Monday as first day of week (00..53)       | 11                     |
+       | %x       | locale's date representation                                         | 03/03/2005             |
+       | %X       | locale's time representation                                         | 23:30:30               |
+       | %y       | last two digits of year (00..99)                                     | 05                     |
+       | %Y       | year                                                                 | 2005                   |
+       | %z       | +hhmm numeric time zone                                              | -0400                  |
+       | %:z      | +hh:mm numeric time zone                                             | -04:00                 |
+       | %::z     | +hh:mm:ss numeric time zone                                          | -04:00:00              |
+       | %:::z    | numeric time zone with : to necessary precision                      | -04, +05:30            |
+       | %Z       | alphabetic time zone abbreviation                                    | EDT                    |
+       
+       By default, date pads numeric fields with zeroes.
+       The following optional flags may follow '%':
+       * `-` (hyphen) do not pad the field
+       * `_` (underscore) pad with spaces
+       * `0` (zero) pad with zeros
+       * `^` use upper case if possible
+       * `#` use opposite case if possible
+       After any flags comes an optional field width, as a decimal number;
+       then an optional modifier, which is either
+       * `E` to use the locale's alternate representations if available, or
+       * `O` to use the locale's alternate numeric symbols if available.
+       Examples:
+         Convert seconds since the epoch (1970-01-01 UTC) to a date
+       
+         date --date='@2147483647'
+       
+         Show the time on the west coast of the US (use tzselect(1) to find TZ)
+       
+         TZ='America/Los_Angeles' date
+
+Arguments:
+  [format]...  
+
+Options:
+  -d, --date <STRING>     display time described by STRING, not 'now'
+  -f, --file <DATEFILE>   like --date; once for each line of DATEFILE
+  -I, --iso-8601 [<FMT>]  output date/time in ISO 8601 format.
+                          FMT='date' for date only (the default),
+                          'hours', 'minutes', 'seconds', or 'ns'
+                          for date and time to the indicated precision.
+                          Example: 2006-08-14T02:34:56-06:00 [possible values: date, hours, minutes, seconds, ns]
+      --resolution        output the available resolution of timestamps
+                          Example: 0.000000001
+  -R, --rfc-email         output date and time in RFC 5322 format.
+                          Example: Mon, 14 Aug 2006 02:34:56 -0600
+      --rfc-3339 <FMT>    output date/time in RFC 3339 format.
+                          FMT='date', 'seconds', or 'ns'
+                          for date and time to the indicated precision.
+                          Example: 2006-08-14 02:34:56-06:00 [possible values: date, seconds, ns]
+      --debug             annotate the parsed date, and warn about questionable usage to stderr
+  -r, --reference <FILE>  display the last modification time of FILE
+  -s, --set <STRING>      set time described by STRING
+  -u, --universal         print or set Coordinated Universal Time (UTC) [alias: --utc]
+  -h, --help              Print help
+  -V, --version           Print version
+
+3. ls manual availability
+/usr/share/man/man1/rust-ls.1.gz
+
+4. ls help output
+List directory contents.
+Ignore files and directories starting with a '.' by default
+
+Usage: ls [OPTION]... [FILE]...
+
+Options:
+      --help                                     Print help information.
+      --format <format>                          Set the display format.
+  -C                                             Display the files in columns.
+  -l, --long                                     Display detailed information.
+  -x                                             List entries in rows instead of in columns.
+  -T, --tabsize <COLS>                           Assume tab stops at each COLS instead of 8 [env: TABSIZE=]
+  -m                                             List entries separated by commas.
+      --zero                                     List entries separated by ASCII NUL characters.
+  -D, --dired                                    generate output designed for Emacs' dired (Directory Editor) mode
+      --hyperlink[=<WHEN>]                       hyperlink file names WHEN [default: never] [possible values: always, auto, never]
+  -1                                             List one file per line.
+  -o                                             Long format without group information.
+                                                 Identical to --format=long with --no-group.
+  -g                                             Long format without owner information.
+  -n, --numeric-uid-gid                          -l with numeric UIDs and GIDs.
+      --quoting-style <quoting-style>            Set quoting style. [possible values: literal, locale, shell, shell-escape, shell-always,
+                                                 shell-escape-always, clocale, c, escape]
+  -N, --literal                                  Use literal quoting style. Equivalent to `--quoting-style=literal`
+  -b, --escape                                   Use escape quoting style. Equivalent to `--quoting-style=escape`
+  -Q, --quote-name                               Use C quoting style. Equivalent to `--quoting-style=c`
+  -q, --hide-control-chars                       Replace control characters with '?' if they are not escaped.
+      --show-control-chars                       Show control characters 'as is' if they are not escaped.
+      --time <field>                             Show time in `<field>`:
+                                                 access time (-u): atime, access, use;
+                                                 change time (-t): ctime, status.
+                                                 modification time: mtime, modification.
+                                                 birth time: birth, creation;
+  -c                                             If the long listing format (e.g., -l, -o) is being used, print the
+                                                 status change time (the 'ctime' in the inode) instead of the modification
+                                                 time. When explicitly sorting by time (--sort=time or -t) or when not
+                                                 using a long listing format, sort according to the status change time.
+  -u                                             If the long listing format (e.g., -l, -o) is being used, print the
+                                                 status access time instead of the modification time. When explicitly
+                                                 sorting by time (--sort=time or -t) or when not using a long listing
+                                                 format, sort according to the access time.
+      --hide <PATTERN>                           do not list implied entries matching shell PATTERN (overridden by -a or -A)
+  -I, --ignore <PATTERN>                         do not list implied entries matching shell PATTERN
+  -B, --ignore-backups                           Ignore entries which end with ~.
+      --sort <field>                             Sort by `<field>`: name, none (-U), time (-t), size (-S), extension (-X) or width [possible values:
+                                                 name, none, time, size, version, extension, width]
+  -S                                             Sort by file size, largest first.
+  -t                                             Sort by modification time (the 'mtime' in the inode), newest first.
+  -v                                             Natural sort of (version) numbers in the filenames.
+  -X                                             Sort alphabetically by entry extension.
+  -U                                             Do not sort; list the files in whatever order they are stored in the
+                                                 directory.  This is especially useful when listing very large directories,
+                                                 since not doing any sorting can be noticeably faster.
+  -L, --dereference                              When showing file information for a symbolic link, show information for the
+                                                 file the link references rather than the link itself.
+      --dereference-command-line-symlink-to-dir  Do not follow symlinks except when they link to directories and are
+                                                 given as command line arguments.
+  -H, --dereference-command-line                 Do not follow symlinks except when given as command line arguments.
+  -G, --no-group                                 Do not show group in long format.
+      --author                                   Show author in long format. On the supported platforms,
+                                                 the author always matches the file owner.
+  -a, --all                                      Do not ignore hidden files (files with names that start with '.').
+  -A, --almost-all                               In a directory, do not ignore all file names that start with '.',
+                                                 only ignore '.' and '..'.
+  -f                                             List all files in directory order, unsorted. Equivalent to -aU. Disables --color unless explicitly
+                                                 specified.
+  -d, --directory                                Only list the names of directories, rather than listing directory contents.
+                                                 This will not follow symbolic links unless one of `--dereference-command-line
+                                                 (-H)`, `--dereference (-L)`, or `--dereference-command-line-symlink-to-dir` is
+                                                 specified.
+  -h, --human-readable                           Print human readable file sizes (e.g. 1K 234M 56G).
+  -k, --kibibytes                                default to 1024-byte blocks for file system usage; used only with -s and per
+                                                 directory totals
+      --si                                       Print human readable file sizes using powers of 1000 instead of 1024.
+      --block-size <BLOCK_SIZE>                  scale sizes by BLOCK_SIZE when printing them
+  -i, --inode                                    print the index number of each file
+  -r, --reverse                                  Reverse whatever the sorting method is e.g., list files in reverse
+                                                 alphabetical order, youngest first, smallest first, or whatever.
+  -R, --recursive                                List the contents of all directories recursively.
+  -w, --width <COLS>                             Assume that the terminal is COLS columns wide.
+  -s, --size                                     print the allocated size of each file, in blocks
+      --color[=<color>]                          Color output based on file type. [possible values: always, auto, never]
+      --indicator-style <indicator-style>        Append indicator with style WORD to entry names:
+                                                 none (default),  slash (-p), file-type (--file-type), classify (-F) [possible values: none, slash,
+                                                 file-type, classify]
+  -F, --classify[=<when>]                        Append a character to each file name indicating the file type. Also, for
+                                                 regular files that are executable, append '*'. The file type indicators are
+                                                 '/' for directories, '@' for symbolic links, '|' for FIFOs, '=' for sockets,
+                                                 '>' for doors, and nothing for regular files. when may be omitted, or one of:
+                                                     none - Do not classify. This is the default.
+                                                     auto - Only classify if standard output is a terminal.
+                                                     always - Always classify.
+                                                 Specifying --classify and no when is equivalent to --classify=always. This will
+                                                 not follow symbolic links listed on the command line unless the
+                                                 --dereference-command-line (-H), --dereference (-L), or
+                                                 --dereference-command-line-symlink-to-dir options are specified. [possible values: always, auto,
+                                                 never]
+      --file-type                                Same as --classify, but do not append '*'
+  -p                                             Append / indicator to directories.
+      --time-style <TIME_STYLE>                  time/date format with -l; see TIME_STYLE below [env: TIME_STYLE=]
+      --full-time                                like -l --time-style=full-iso
+  -Z, --context                                  print any security context of each file
+      --group-directories-first                  group directories before files; can be augmented with
+                                                 a --sort option, but any use of --sort=none (-U) disables grouping
+  -V, --version                                  Print version
+
+The TIME_STYLE argument can be full-iso, long-iso, iso, locale or +FORMAT. FORMAT is interpreted like in date. Also the TIME_STYLE environment
+variable sets the default style to use.

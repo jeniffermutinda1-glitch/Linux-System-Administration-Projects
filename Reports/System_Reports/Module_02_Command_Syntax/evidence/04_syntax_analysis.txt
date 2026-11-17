@@ -1,0 +1,23 @@
+PROJECT 2: COMMAND SYNTAX ANALYSIS
+===================================
+
+1. Identify command type
+$ type ls
+ls is aliased to `ls --color=auto'
+
+2. Identify command location
+$ command -v ls
+alias ls='ls --color=auto'
+
+3. Analyse command structure
+Command: ls
+Options: -l, -a, -h
+Argument: /etc
+Full command: ls -lah /etc
+
+4. Explanation
+ls = command
+-l = long listing format
+-a = include hidden entries
+-h = human-readable file sizes
+/etc = target directory
